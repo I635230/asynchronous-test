@@ -6,6 +6,10 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+@app.get("/")
+def read_root():
+    return {"status": "ok"}
+
 async def start_fastapi():
     config = uvicorn.Config(app=app, host="0.0.0.0", port=8000)
     server = uvicorn.Server(config)
